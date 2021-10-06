@@ -152,8 +152,6 @@ function restartGame() {
     let playerTransition = player1
     player1 = player2
     player2 = playerTransition
-    window.alert(player1.name)
-    window.alert(player2.name)
     return victory = false, round = 0
 }
 
