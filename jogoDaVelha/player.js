@@ -7,6 +7,7 @@ let player2 = {
     value: "O"
 }
 let round = 0
+let victory = false
 
 function definePlayers(){
     player1.name = window.prompt('Digite o nome do jogador 1')
