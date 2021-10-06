@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,14 @@
     <title>Jogo da velha da Cloudmed</title>
     <link rel="stylesheet" href="styless.css">
 </head>
+
 <body>
     <div class='root'>
         <header>
             <h1 id="playerPlays">
             </h1>
             <div>
-                <button class="restarteButton">Novo jogo</button>
+                <button class="restarteButton" onclick="restartGame()">Novo jogo</button>
             </div>
         </header>
 
@@ -34,7 +36,9 @@
             <div class='fileira2'>
 
                 <div id="quadrado4" class='area1'>
-                    <button class="insert" id='4' onclick="pullValue(this.id)"><p></p></button class="insert">
+                    <button class="insert" id='4' onclick="pullValue(this.id)">
+                        <p></p>
+                    </button class="insert">
                 </div>
                 <div id="quadrado5" class='areaCentral'>
                     <button class="insert" id='5' onclick="pullValue( this.id)">
@@ -59,13 +63,16 @@
             </div>
 
         </div>
+        <footer id="footer">
 
+        </footer>
     </div>
-    <script type="text/javascript"src="gameRules.js"></script>
-    <script type="text/javascript"src="player.js"></script>
+    <script type="text/javascript" src="gameRules.js"></script>
+    <script type="text/javascript" src="player.js"></script>
     <script>
         definePlayers()
         whoPlays(round)
     </script>
 </body>
+
 </html>

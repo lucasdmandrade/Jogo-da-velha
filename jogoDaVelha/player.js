@@ -1,10 +1,12 @@
 let player1 = {
     name: "Lucas",
-    value: "x"
+    value: "x",
+    victories: 0
 }
 let player2 = {
     name: "Rafa",
-    value: "O"
+    value: "O",
+    victories: 0
 }
 let round = 0
 let victory = false

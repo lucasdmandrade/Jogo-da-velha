@@ -12,6 +12,7 @@ function pullValue(id) {
         whoPlays(round)
     } else {
         crashInputs()
+        contVictories()
     }
 }
 
@@ -86,10 +87,14 @@ function colorizeWinner(id1, id2, id3, value) {
         playerPlays.innerHTML = `Vitória do jogador: ${player1.name}(${player1.value}) </br>
         Em ${Math.round((round + 1) / 2)} rodadas
         `
+
+        player1.victories += 1
     } else {
         playerPlays.innerHTML = `Vitória do jogador: ${player2.name}(${player2.value})</br>
         Em ${Math.round((round + 1) / 2)} rodadas
         `
+
+        player2.victories += 1
     }
     return victory = true
 }
@@ -120,7 +125,7 @@ function setValues(id) {
 }
 
 //Função para mostrar paragrafo com valor no botão
-function showValue(id, button){
+function showValue(id, button) {
     if (round % 2 == 0) {
         button.value = player1.value
         document.getElementById(`${id}`).innerHTML = `
@@ -130,6 +135,37 @@ function showValue(id, button){
         button.value = player2.value
         document.getElementById(`${id}`).innerHTML = `
     <p> ${player2.value.substr(0, 1)} </p>
+    `
+    }
+}
+
+//Função para reiniciar jogo
+function restartGame() {
+    for (var i = 1; i <= 9; i++) {
+        square = `quadrado${i}`
+        div = document.getElementById(i)
+        document.getElementById(`${square}`).innerHTML = `
+            <button class="insert" id='${i}' onclick="pullValue(this.id)";">`
+    }
+
+    whoPlays(round)
+    let playerTransition = player1
+    player1 = player2
+    player2 = playerTransition
+    window.alert(player1.name)
+    window.alert(player2.name)
+    return victory = false, round = 0
+}
+
+//Função para adicionar footer com placar 
+function contVictories(){
+    if(player1.victories >= player2.victories){
+        footer.innerHTML = `<h2>Jogador: ${player1.name} teve: ${player1.victories} vitórias </br>
+    Jogador: ${player2.name} teve: ${player2.victories} vitórias</h2>
+    `
+    }else{
+        footer.innerHTML = `<h2>Jogador: ${player2.name} teve: ${player2.victories} vitórias </br>
+    Jogador: ${player1.name} teve: ${player1.victories} vitórias</h2>
     `
     }
 }
