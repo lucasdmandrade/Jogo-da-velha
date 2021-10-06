@@ -9,44 +9,48 @@
 </head>
 <body>
     <div class='root'>
+        <header>
+            <h1 id="playerPlays">
+            </h1>
+        </header>
 
         <div class='quadranteTotal'>
             <div class='fileira1'>
 
                 <div id="quadrado1" class='area1'>
-                    <input id='1' onchange="pullValue(this.id)">
+                    <button id='1' onclick="pullValue(this.id)">
                 </div>
                 <div id="quadrado2" class='areaCentral'>
-                    <input id='2' onchange="pullValue(this.id)">
+                    <button id='2' onclick="pullValue(this.id)">
                 </div>
                 <div id="quadrado3" class='area3'>
-                    <input id='3' onchange="pullValue( this.id)">
+                    <button id='3' onclick="pullValue( this.id)">
                 </div>
 
             </div>
             <div class='fileira2'>
 
                 <div id="quadrado4" class='area1'>
-                    <input id='4' onchange="pullValue(this.id)">
+                    <button id='4' onclick="pullValue(this.id)"><p></p></button>
                 </div>
                 <div id="quadrado5" class='areaCentral'>
-                    <input id='5' onchange="pullValue( this.id)">
+                    <button id='5' onclick="pullValue( this.id)">
                 </div>
                 <div id="quadrado6" class='area3'>
-                    <input id='6' onchange="pullValue( this.id)">
+                    <button id='6' onclick="pullValue( this.id)"></button>
                 </div>
 
             </div>
             <div class='fileira3'>
 
                 <div id="quadrado7" class='area1'>
-                    <input id='7' onchange="pullValue( this.id)">
+                    <button id='7' onclick="pullValue( this.id)">
                 </div>
                 <div id="quadrado8" class='areaCentral'>
-                    <input id='8' onchange="pullValue( this.id)">
+                    <button id='8' onclick="pullValue( this.id)">
                 </div>
                 <div id="quadrado9" class='area3'>
-                    <input id='9' onchange="pullValue( this.id)">
+                    <button id='9' onclick="pullValue( this.id)">
                 </div>
 
             </div>
@@ -54,6 +58,11 @@
         </div>
 
     </div>
-    <script type="text/javascript"src="functions.js"></script>
+    <script type="text/javascript"src="gameRules.js"></script>
+    <script type="text/javascript"src="player.js"></script>
+    <script>
+        definePlayers()
+        whoPlays(round)
+    </script>
 </body>
 </html>

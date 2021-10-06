@@ -55,3 +55,25 @@ input{
     font-size: 18vh;
     text-align: center;
 }
+button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20vh;
+    height: 20vh;
+
+    font-size: 18vh;
+    text-align: center;
+}
+button p{
+    display: flex;
+
+    width: 25vh;
+    height: 25vh;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18vh;
+    text-align: center;
+}
