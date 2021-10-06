@@ -1,10 +1,31 @@
+.root{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+header{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+
+    width: 100vh;
+}
+header button{
+    border-radius: 100%;
+    width: 10vh;
+    height: 10vh;
+}
 .quadranteTotal{
     display: flex;
     flex-direction: column;
 
-background-color: aqua;
-width: 75vh;
-height: 75vh;
+    background-color: aqua;
+    width: 75vh;
+    height: 75vh;
+
+    border-radius: 20px;
 }
 .fileira1{
     display: flex;
@@ -55,7 +76,7 @@ input{
     font-size: 18vh;
     text-align: center;
 }
-button{
+.insert{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,7 +87,7 @@ button{
     font-size: 18vh;
     text-align: center;
 }
-button p{
+.insert p{
     display: flex;
 
     width: 25vh;
