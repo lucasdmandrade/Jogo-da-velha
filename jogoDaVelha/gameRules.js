@@ -9,7 +9,7 @@ function pullValue(id){
     }else{
         button.value = player2.value
         document.getElementById(`${id}`).innerHTML = `
-    <p> ${player2.value} </p>
+    <p> ${player2.value.substr(0, 1)} </p>
     `
     }
     value = document.getElementById(id).value
