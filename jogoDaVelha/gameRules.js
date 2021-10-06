@@ -1,11 +1,26 @@
 //Função para puxar o valor digitado e o id do seu input
 function pullValue(id){
+    let button = document.getElementById(id)
+    if(round % 2 == 0){
+        button.value = player1.value
+        document.getElementById(`${id}`).innerHTML = `
+    <p> ${player1.value} </p>
+    `
+    }else{
+        button.value = player2.value
+        document.getElementById(`${id}`).innerHTML = `
+    <p> ${player2.value} </p>
+    `
+    }
     value = document.getElementById(id).value
+    
 
     testVictory(id, value)
     round = contRounds(round)
     if(victory != true){
         whoPlays(round)
+    }else{
+        crashInputs()
     }
 }  
 
@@ -76,9 +91,29 @@ function colorizeWinner(id1, id2, id3, value){
     document.getElementById(id3).style.backgroundColor   = 'aqua'
     
     if(player1.value == value){
-        playerPlays.innerHTML = `Vitória do jogador ${player1.name}(${player1.value})`
+        console.log(value)
+        playerPlays.innerHTML = `Vitória do jogador: ${player1.name}(${player1.value}) </br>
+        Em ${Math.round((round + 1) / 2)} rodadas
+        `
     }else{
-        playerPlays.innerHTML = `Vitória do jogador ${player2.name}(${player2.value})`
+        playerPlays.innerHTML = `Vitória do jogador: ${player2.name}(${player2.value})</br>
+        Em ${Math.round((round + 1) / 2)} rodadas
+        `
     }
     return victory = true
+}
+
+//Função para travar os inputs(Encerrar jogo)
+function crashInputs(){
+    let square =''
+    let div = ''
+    for(var i = 1; i <= 9; i++){
+        square = `quadrado${i}`
+        div = document.getElementById(i)
+        document.getElementById(`${square}`).innerHTML = `
+            <input id='${i}' onchange="pullValue(this.id)"
+            value="${div.value}" style="background-color: ${div.style.backgroundColor};" readonly>
+        `
+        console.log(div )
+        }
 }
