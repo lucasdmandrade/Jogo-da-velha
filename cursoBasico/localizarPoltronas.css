@@ -1,0 +1,13 @@
+.poltronas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.poltronas img{
+    width: 10vw;
+}
+.centralyze{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
