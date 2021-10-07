@@ -1,9 +1,9 @@
-let player1 = {
+let Player1 = {
     name: "Lucas",
     value: "x",
     victories: 0
 }
-let player2 = {
+let Player2 = {
     name: "Rafa",
     value: "O",
     victories: 0
@@ -13,13 +13,13 @@ let victory = false
 
 //Função para definir nome e caracter usado por cada jogador
 function definePlayers(){
-    player1.name = window.prompt('Digite o nome do jogador 1')
-    player1.value = window.prompt(`Digite o caracter usado pelo jogador ${player1.name}
+    Player1.name = window.prompt('Digite o nome do jogador 1')
+    Player1.value = window.prompt(`Digite o caracter usado pelo jogador ${Player1.name}
     (X ou O)
     `).toUpperCase()
 
-    player2.name = window.prompt('Digite o nome do jogador 2')
-    player2.value = window.prompt(`Digite o caracter usado pelo jogador ${player2.name}
+    Player2.name = window.prompt('Digite o nome do jogador 2')
+    Player2.value = window.prompt(`Digite o caracter usado pelo jogador ${Player2.name}
     (X ou O)
     `).toUpperCase()
     errWhoPlays()
@@ -34,29 +34,29 @@ function contRounds(round){
 //Função para definir qual jogador esta ativo
 function whoPlays(round){
     if(round % 2 == 0){
-        playerPlays.innerHTML = `Vez do jogador ${player1.name}(${player1.value})`
+        playerPlays.innerHTML = `Vez do jogador ${Player1.name}(${Player1.value})`
     }else{
-        playerPlays.innerHTML = `Vez do jogador ${player2.name}(${player2.value})`
+        playerPlays.innerHTML = `Vez do jogador ${Player2.name}(${Player2.value})`
     }
     
 }
 
 //Função de erros de definir jogadores 
 function errWhoPlays(){
-    if(player1.value == player2.value){
+    if(Player1.value == Player2.value){
         window.alert('Erro: Caracteres iguais. Ação sera repetida')
         definePlayers()
     }
-    if(player1.name == player2.name){
+    if(Player1.name == Player2.name){
         window.alert('Erro: Nomes iguais. Ação sera repetida')
         definePlayers()
     }
-    if(player1.value != 'X' && player1.value != 'O'){
-        window.alert(`Erro: Valor de caracter ${player1.value} do jogador ${player1.name} não aceito. Ação sera repetida`)
+    if(Player1.value != 'X' && Player1.value != 'O'){
+        window.alert(`Erro: Valor de caracter ${Player1.value} do jogador ${Player1.name} não aceito. Ação sera repetida`)
         definePlayers()
     }
-    if(player2.value != 'X' && player2.value != 'O'){
-        window.alert(`Erro: Valor de caracter ${player2.value} do jogador ${player2.name} não aceito. Ação sera repetida`)
+    if(Player2.value != 'X' && Player2.value != 'O'){
+        window.alert(`Erro: Valor de caracter ${Player2.value} do jogador ${Player2.name} não aceito. Ação sera repetida`)
         definePlayers()
     }
 
