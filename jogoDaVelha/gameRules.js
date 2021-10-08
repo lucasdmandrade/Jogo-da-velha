@@ -107,9 +107,13 @@ function crashInputs() {
         square = `quadrado${i}`
         div = document.getElementById(i)
         document.getElementById(`${square}`).innerHTML = `
-            <input id='${i}' onchange="pullValue(this.id)"
-            value="${div.value}" style="background-color: ${div.style.backgroundColor};" readonly>
+            <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
+            value="${div.value}" readonly>
+            <p>${div.value} </p>
+            </button>
         `
+        borderCorrect(i, div, square)
+        
         console.log(div)
     }
 }
@@ -119,8 +123,10 @@ function setValues(id) {
     square = `quadrado${id}`
     div = document.getElementById(id)
     document.getElementById(`${square}`).innerHTML = `
-            <input id='${id}' onchange="pullValue(this.id)"
+            <button class="insert" id='${id}' onload="pullValue(this.id)"
             value="${div.value}" style="background-color: ${div.style.backgroundColor};" readonly>
+                <p>${div.value} </p>
+            </button>
         `
 }
 
@@ -155,15 +161,50 @@ function restartGame() {
     return victory = false, round = 0
 }
 
-//Função para adicionar footer com placar 
+//Função para adicionar  placar 
 function contVictories(){
     if(Player1.victories >= Player2.victories){
-        footer.innerHTML = `<h2>Jogador: ${Player1.name} teve: ${Player1.victories} vitórias </br>
-    Jogador: ${Player2.name} teve: ${Player2.victories} vitórias</h2>
+        scoreBoard.innerHTML = `<h1>Placar</h1>
+        <h2>Jogador 1: ${Player1.name} teve ${Player1.victories} vitórias </br>
+    Jogador 2: ${Player2.name} teve ${Player2.victories} vitórias</h2>
     `
     }else{
-        footer.innerHTML = `<h2>Jogador: ${Player2.name} teve: ${Player2.victories} vitórias </br>
-    Jogador: ${Player1.name} teve: ${Player1.victories} vitórias</h2>
+        scoreBoard.innerHTML = `<h1>Placar </h1>
+        <h2>Jogador 2: ${Player2.name} teve ${Player2.victories} vitórias </br>
+    Jogador 1: ${Player1.name} teve ${Player1.victories} vitórias</h2>
+    `
+    }
+}
+
+//Função para corrigir borda 
+function borderCorrect(i, div, square){
+    if(i == 1){
+        document.getElementById(`${square}`).innerHTML = `
+        <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
+        value="${div.value}" style= border-top=left-radius: 20px"; readonly>
+        <p>${div.value} </p>
+        </button>
+    `
+    } else if(i == 3){
+        document.getElementById(`${square}`).innerHTML = `
+        <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
+        value="${div.value}" style= border-top-right-radius:20px"; readonly>
+        <p>${div.value} </p>
+        </button>
+    `
+    }else if(i == 7){
+        document.getElementById(`${square}`).innerHTML = `
+        <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
+        value="${div.value}" style= border-bottom-left-radius: 20px"; readonly>
+        <p>${div.value} </p>
+        </button>
+    `
+    }else if(i == 9){
+        document.getElementById(`${square}`).innerHTML = `
+        <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
+        value="${div.value}" style= border-bottom-right-radius: 20px" readonly>
+        <p>${div.value} </p>
+        </button>
     `
     }
 }
