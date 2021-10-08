@@ -79,6 +79,10 @@ function testVictory(id, value) {
 //Função para mostra alerta de vitoria
 function alertVictory(id1, id2, id3, value) {
 
+    idVictory.push(id1)
+    idVictory.push(id2)
+    idVictory.push(id3)
+
     if (Player1.value == value) {
         console.log(value)
         playerPlays.innerHTML = `Vitória do jogador: ${Player1.name}(${Player1.value}) </br>
@@ -101,18 +105,33 @@ function crashInputs() {
     let square = ''
     let div = ''
     for (var i = 1; i <= 9; i++) {
-        square = `quadrado${i}`
-        div = document.getElementById(i)
-        document.getElementById(`${square}`).innerHTML = `
-            <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
-            value="${div.value}" readonly>
-            <p>${div.value} </p>
-            </button>
+        for(var j = 0; j < idVictory.length; j++){
+            if(i === idVictory[j]){
+                console.log(`j = ${idVictory[j]}, i=${i}`)
+                square = `quadrado${i}`
+                div = document.getElementById(i)
+                document.getElementById(`${square}`).innerHTML = `
+                    <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
+                    value="${div.value}" readonly>
+                    <span><p>${div.value} </p></span>
+                    </button>
         `
+        i++
+            }else{
+                square = `quadrado${i}`
+                div = document.getElementById(i)
+                document.getElementById(`${square}`).innerHTML = `
+                    <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
+                    value="${div.value}" readonly>
+                    <p>${div.value} </p>      
+                    </button>
+        `
+            }
+        }
+        
         borderCorrect(i, div, square)
         
-        console.log(div)
-    }
+    }   
 }
 
 //Função para setar valores ja inseridos
@@ -144,6 +163,7 @@ function showValue(id, button) {
 
 //Função para reiniciar jogo
 function restartGame() {
+    idVictory = []
     for (var i = 1; i <= 9; i++) {
         square = `quadrado${i}`
         div = document.getElementById(i)
@@ -193,7 +213,7 @@ function borderCorrect(i, div, square){
         document.getElementById(`${square}`).innerHTML = `
         <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
         value="${div.value}" style= border-bottom-left-radius: 20px"; readonly>
-        <p>${div.value} </p>
+        <span><p>${div.value} </p></span>
         </button>
     `
     }else if(i == 9){

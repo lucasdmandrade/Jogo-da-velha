@@ -10,6 +10,7 @@ let Player2 = {
 }
 let round = 0
 let victory = false
+let idVictory = []
 
 //Função para definir nome e caracter usado por cada jogador
 function definePlayers(){
