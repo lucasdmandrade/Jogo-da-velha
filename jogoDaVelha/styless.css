@@ -1,48 +1,72 @@
 .root{
+    margin-top: -25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.middle{
+    display: flex;
+    justify-content: center;
+}
+.colum{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-}
-header{
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
 
     width: 100vh;
 }
-header button{
-    border-radius: 100%;
-    width: 10vh;
-    height: 10vh;
+.restartButton{
+    border-radius: 20px;
+    border-style: solid;
+    width: 8vw;
+    height: 7vh;
+
+    font-family: Times, Times New Roman, serif;
+    font-size: large;
+    font-weight: bold;
+
+    margin-top: -10px;
+    margin-bottom: 20px;
 }
 .quadranteTotal{
     display: flex;
     flex-direction: column;
 
-    background-color: aqua;
+    background-color: gainsboro;
     width: 75vh;
     height: 75vh;
 
     border-radius: 20px;
 }
+.quadranteTotal button{
+    background-color: gainsboro;
+    border-style: none;
+    width: 90%;
+    height: 90%;
+    
+}
+.quadranteTotal button:hover{
+    background-color: wheat;
+}
+
 .fileira1{
     display: flex;
 
-    height: 25vh;
+    height: 33%;
 }
 
 .fileira2{
     display: flex;
 
-    height: 25vh;
+    height: 33%;
     border-top: double
 }
 .fileira3{
     display: flex;
 
-    height: 25vh;
+    height: 33%;
     border-top: double
 }
 .area1{
@@ -69,32 +93,34 @@ header button{
     width: 25vh;
 }
 
-input{
-    width: 20vh;
-    height: 20vh;
-
-    font-size: 18vh;
-    text-align: center;
-}
 .insert{
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 20vh;
-    height: 20vh;
-
-    font-size: 18vh;
     text-align: center;
 }
 .insert p{
     display: flex;
-
-    width: 25vh;
-    height: 25vh;
     align-items: center;
     justify-content: center;
 
     font-size: 18vh;
     text-align: center;
+}
+.scoreBoard{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 15px   ;
+
+    border-style: double;
+    border-radius: 20px;
+
+    width: 40vw;
+    height: 25vh;
+}
+span{
+    border: solid;
+    width: 0px;
 }
