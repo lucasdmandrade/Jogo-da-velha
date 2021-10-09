@@ -106,6 +106,7 @@ function crashInputs() {
     let div = ''
     for (var i = 1; i <= 9; i++) {
         for(var j = 0; j < idVictory.length; j++){
+            
             if(i === idVictory[j]){
                 console.log(`j = ${idVictory[j]}, i=${i}`)
                 square = `quadrado${i}`
@@ -116,7 +117,7 @@ function crashInputs() {
                     <span><p>${div.value} </p></span>
                     </button>
         `
-        i++
+        break
             }else{
                 square = `quadrado${i}`
                 div = document.getElementById(i)
@@ -195,33 +196,15 @@ function contVictories(){
 
 //Função para corrigir borda 
 function borderCorrect(i, div, square){
+
     if(i == 1){
-        document.getElementById(`${square}`).innerHTML = `
-        <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
-        value="${div.value}" style= border-top=left-radius: 20px"; readonly>
-        <p>${div.value} </p>
-        </button>
-    `
+    document.getElementById(`${i}`).style.borderRadius = '20px'
     } else if(i == 3){
-        document.getElementById(`${square}`).innerHTML = `
-        <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
-        value="${div.value}" style= border-top-right-radius:20px"; readonly>
-        <p>${div.value} </p>
-        </button>
-    `
+        document.getElementById(`${i}`).style.borderRadius = '20px'  
     }else if(i == 7){
-        document.getElementById(`${square}`).innerHTML = `
-        <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
-        value="${div.value}" style= border-bottom-left-radius: 20px"; readonly>
-        <span><p>${div.value} </p></span>
-        </button>
-    `
+        document.getElementById(`${i}`).style.borderRadius = '20px'  
+    
     }else if(i == 9){
-        document.getElementById(`${square}`).innerHTML = `
-        <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
-        value="${div.value}" style= border-bottom-right-radius: 20px" readonly>
-        <p>${div.value} </p>
-        </button>
-    `
+        document.getElementById(`${i}`).style.borderRadius = '20px'
     }
 }
