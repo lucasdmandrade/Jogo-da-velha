@@ -10,6 +10,7 @@ function pullValue(id) {
     round = contRounds(round)
     if (victory != true) {
         whoPlays(round)
+        draw()
     } else {
         crashInputs()
         rotateSpan()
@@ -291,6 +292,15 @@ function rotateSpan(){
 
             //Aumentando span central para ficar do tamanho da diagonal do quadrado inteiro
             document.querySelector('.span' + idVictory[1]).style.height =  '423%'
+        }
+    }
+}
+
+//Função empate 
+function draw(){
+    if(round == 9){
+        if(confirm('Empate! Deseja jogar mais?')){
+            restartGame()
         }
     }
 }
