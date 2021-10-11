@@ -114,9 +114,13 @@ function crashInputs() {
                 document.getElementById(`${square}`).innerHTML = `
                     <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
                     value="${div.value}" readonly>
-                    <span><p>${div.value} </p></span>
+                    <div class="span"><p>${div.value} </p></div>
                     </button>
         `
+        console.log(idVictory[j], j, i)
+        rotateSpan(j)
+        //console.log(document.getElementById(`${i}`).getElementsByTagName('span'))
+        //document.getElementById(`${i}`).getElementsByTagName('span').style.width = '30vh'
         break
             }else{
                 square = `quadrado${i}`
@@ -206,5 +210,15 @@ function borderCorrect(i, div, square){
     
     }else if(i == 9){
         document.getElementById(`${i}`).style.borderRadius = '20px'
+    }
+}
+
+function rotateSpan(j){
+    idVictory.sort()
+    console.log(idVictory)
+    //Girando 90°
+    if(idVictory[2] == idVictory[1] + 1 && idVictory[1] == idVictory[0] +1){
+        //document.querySelector('.span' + j).style.transform = 'rotate(90deg)'
+        //document.querySelector('.span').style.transform = 'rotate(90deg)'
     }
 }
