@@ -120,19 +120,13 @@
     width: 40vw;
     height: 25vh;
 }
-.span{
+span{
     display: flex;
-    justify-content: center;
+   justify-content: center;
     align-items: center;
 
     border:solid;
-    opacity: 80%;
+    border-radius: 20px;
     width: 0px;
     height: 100%;
-
-
-    transform: rotate(45deg);
-}
-.span p{
-    transform: rotate(-45deg);
 }
