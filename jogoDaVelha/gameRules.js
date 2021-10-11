@@ -12,6 +12,7 @@ function pullValue(id) {
         whoPlays(round)
     } else {
         crashInputs()
+        rotateSpan()
         contVictories()
     }
 }
@@ -114,11 +115,10 @@ function crashInputs() {
                 document.getElementById(`${square}`).innerHTML = `
                     <button class="insert" id='${i}' name="${i}" onchange="pullValue(this.id)"
                     value="${div.value}" readonly>
-                    <div class="span"><p>${div.value} </p></div>
+                    <span class="span${i}"><p>${div.value} </p></span>
                     </button>
         `
         console.log(idVictory[j], j, i)
-        rotateSpan(j)
         //console.log(document.getElementById(`${i}`).getElementsByTagName('span'))
         //document.getElementById(`${i}`).getElementsByTagName('span').style.width = '30vh'
         break
@@ -213,12 +213,35 @@ function borderCorrect(i, div, square){
     }
 }
 
-function rotateSpan(j){
+function rotateSpan(){
     idVictory.sort()
-    console.log(idVictory)
+    console.log(typeof('.span' + idVictory[0]))
     //Girando 90°
-    if(idVictory[2] == idVictory[1] + 1 && idVictory[1] == idVictory[0] +1){
-        //document.querySelector('.span' + j).style.transform = 'rotate(90deg)'
-        //document.querySelector('.span').style.transform = 'rotate(90deg)'
+    for(var i = 0; i <idVictory.length; i++){
+        //Linha horizontal
+        if(idVictory[2] == idVictory[1] + 1 && idVictory[1] == idVictory[0] +1){
+            console.log(idVictory[i]) 
+            console.log(document.querySelector('.span' + idVictory[i])) 
+            document.querySelector('.span' + idVictory[i]).style.transform = 'rotate(90deg)' 
+            document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(-90deg)'
+        }else //Diagonal(1 ate 9)
+        if(idVictory[2] == 9 && idVictory[0] == 1 && idVictory[1] == 5){
+            console.log(idVictory[i]) 
+            console.log(document.querySelector('.span' + idVictory[i])) 
+            document.querySelector('.span' + idVictory[i]).style.transform = 'rotate(-45deg)' 
+            document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(45deg)'
+
+            //Aumentando span para ficar do tamanho da diagonal do quadrado(aprox: 1,42)
+            document.querySelector('.span' + idVictory[i]).style.height =  '142%'
+        }else //Diagonal(3 ate 7)
+        if(idVictory[2] == 7 && idVictory[0] == 3 && idVictory[1] == 5){
+            console.log(idVictory[i]) 
+            console.log(document.querySelector('.span' + idVictory[i])) 
+            document.querySelector('.span' + idVictory[i]).style.transform = 'rotate(45deg)' 
+            document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(-45deg)'
+
+            //Aumentando span para ficar do tamanho da diagonal do quadrado(aprox: 1,42)
+            document.querySelector('.span' + idVictory[i]).style.height =  '142%'
+        }
     }
 }
