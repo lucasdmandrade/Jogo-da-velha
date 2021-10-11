@@ -26,11 +26,11 @@ function testVictory(id, value) {
     if (id == 5) {
         if (document.getElementById(1).value == value && document.getElementById(9).value == value) {
             victory = alertVictory(id, 1, 9, value);
-        } else if (document.getElementById(3).value == value && document.getElementById(7).value == value) {
+        } if (document.getElementById(3).value == value && document.getElementById(7).value == value) {
             victory = alertVictory(id, 3, 7, value);
-        } else if (document.getElementById(2).value == value && document.getElementById(8).value == value) {
+        } if (document.getElementById(2).value == value && document.getElementById(8).value == value) {
             victory = alertVictory(id, 2, 8, value);
-        } else if (document.getElementById(4).value == value && document.getElementById(6).value == value) {
+        } if (document.getElementById(4).value == value && document.getElementById(6).value == value) {
             victory = alertVictory(id, 4, 6, value);
         }
 
@@ -41,7 +41,7 @@ function testVictory(id, value) {
                 victory = alertVictory(id, 5, 9, value);
             }
             //Diagonal
-        } else if (id == 7) {
+        } if (id == 7) {
             if (document.getElementById(7).value == document.getElementById(5).value && document.getElementById(5).value == document.getElementById(3).value) {
                 victory = alertVictory(id, 5, 3, value);
             }
@@ -50,28 +50,28 @@ function testVictory(id, value) {
         if (document.getElementById(id + 1).value == value && document.getElementById(id + 2).value == value) {
             victory = alertVictory(id, id + 1, id + 2, value);
         }//Horizontal
-        else if (document.getElementById(1).value == document.getElementById(4).value && document.getElementById(4).value == document.getElementById(7).value) {
+        if (document.getElementById(1).value == document.getElementById(4).value && document.getElementById(4).value == document.getElementById(7).value) {
             victory = alertVictory(1, 4, 7, value);
         }
-    } else if (id == 3 || id == 6 || id == 9) {
+    }  if (id == 3 || id == 6 || id == 9) {
         if (id == 9) {
             if (document.getElementById(1).value == document.getElementById(5).value && document.getElementById(5).value == document.getElementById(9).value) {
                 victory = alertVictory(id, 1, 5, value);
             }
-        } else if (id == 3) {
+        }  if (id == 3) {
             if (document.getElementById(3).value == document.getElementById(5).value && document.getElementById(5).value == document.getElementById(7).value) {
                 victory = alertVictory(id, 5, 7, value);
             }
         }
         if (document.getElementById(id - 1).value == value && document.getElementById(id - 2).value == value) {
             victory = alertVictory(id, id - 1, id - 2, value);
-        } else if (document.getElementById(3).value == document.getElementById(6).value && document.getElementById(6).value == document.getElementById(9).value) {
+        }  if (document.getElementById(3).value == document.getElementById(6).value && document.getElementById(6).value == document.getElementById(9).value) {
             victory = alertVictory(3, 6, 9, value);
         }
-    } else if (id == 2 || id == 8) {
+    }  if (id == 2 || id == 8) {
         if (document.getElementById(id - 1).value == value && document.getElementById(id + 1).value == value) {
             victory = alertVictory(id, id - 1, id + 1, value);
-        } else if (document.getElementById(2).value == document.getElementById(5).value && document.getElementById(5).value == document.getElementById(8).value) {
+        }  if (document.getElementById(2).value == document.getElementById(5).value && document.getElementById(5).value == document.getElementById(8).value) {
             victory = alertVictory(2, 5, 8, value);
         }
     }
@@ -118,10 +118,7 @@ function crashInputs() {
                     <span class="span${i}"><p>${div.value} </p></span>
                     </button>
         `
-        console.log(idVictory[j], j, i)
-        //console.log(document.getElementById(`${i}`).getElementsByTagName('span'))
-        //document.getElementById(`${i}`).getElementsByTagName('span').style.width = '30vh'
-        break
+            break
             }else{
                 square = `quadrado${i}`
                 div = document.getElementById(i)
@@ -131,6 +128,7 @@ function crashInputs() {
                     <p>${div.value} </p>      
                     </button>
         `
+        document.getElementById(i).style.opacity = '80%'
             }
         }
         
@@ -214,25 +212,76 @@ function borderCorrect(i, div, square){
 }
 
 function rotateSpan(){
+    let idVictory2 = []
+    //Separando vetor em 2 caso seja vitoria dupla
+    console.log(idVictory)
+    if(idVictory.length > 3){
+        idVictory2 = [idVictory[3], idVictory[4], idVictory[5]]
+        idVictory.splice(3, 3)
+        console.log(idVictory2)
+    }
+
     idVictory.sort()
-    console.log(typeof('.span' + idVictory[0]))
-    //Girando 90°
-    for(var i = 0; i <idVictory.length; i++){
+    idVictory2.sort()
+
+
+    console.log(idVictory2)
+    console.log(idVictory)
+
+    //Vitória dupla 
+    if(idVictory2[0] != undefined){
+        alert(idVictory2)
+        for(var i = 0; i <3; i++){
+            //Linha vertical
+            if(idVictory2[2] == idVictory2[1] + 3 && idVictory2[1] == idVictory2[0] +3){
+            //Aumentando span central para ficar do tamanho do quadrado inteiro
+            document.querySelector('.span' + idVictory2[1]).style.height =  '300%'
+            }else//Linha horizontal
+            if(idVictory2[2] == idVictory2[1] + 1 && idVictory2[1] == idVictory2[0] +1){
+                document.querySelector('.span' + idVictory2[i]).style.transform = 'rotate(90deg)' 
+                document.querySelector('.span' + idVictory2[i]).querySelector('p').style.transform = 'rotate(-90deg)'
+            
+                //Aumentando span central para ficar do tamanho do quadrado inteiro
+                document.querySelector('.span' + idVictory2[1]).style.height =  '300%'
+            }else //Diagonal(1 ate 9)
+            if(idVictory2[2] == 9 && idVictory2[0] == 1 && idVictory2[1] == 5){
+                document.querySelector('.span' + idVictory2[i]).style.transform = 'rotate(-45deg)' 
+                document.querySelector('.span' + idVictory2[i]).querySelector('p').style.transform = 'rotate(45deg)'
+    
+                //Aumentando span central para ficar do tamanho da diagonal do quadrado inteiro
+                document.querySelector('.span' + idVictory2[1]).style.height =  '423%'
+            }else //Diagonal(3 ate 7)
+            if(idVictory2[2] == 7 && idVictory2[0] == 3 && idVictory2[1] == 5){
+                document.querySelector('.span' + idVictory2[i]).style.transform = 'rotate(45deg)' 
+                document.querySelector('.span' + idVictory2[i]).querySelector('p').style.transform = 'rotate(-45deg)'
+    
+                //Aumentando span central para ficar do tamanho da diagonal do quadrado inteiro
+                document.querySelector('.span' + idVictory2[1]).style.height =  '423%'
+            }
+        }
+    }
+   
+    for(var i = 0; i <3; i++){
+        //Linha vertical
+        if(idVictory[2] == idVictory[1] + 3 && idVictory[1] == idVictory[0] +3){
+
+            //Aumentando span central para ficar do tamanho do quadrado inteiro
+            document.querySelector('.span' + idVictory[1]).style.height =  '300%'
+        } else
         //Linha horizontal
         if(idVictory[2] == idVictory[1] + 1 && idVictory[1] == idVictory[0] +1){
-            console.log(idVictory[i]) 
-            console.log(document.querySelector('.span' + idVictory[i])) 
             document.querySelector('.span' + idVictory[i]).style.transform = 'rotate(90deg)' 
             document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(-90deg)'
+
+            //Aumentando span central para ficar do tamanho do quadrado inteiro
+            document.querySelector('.span' + idVictory[1]).style.height =  '300%'
         }else //Diagonal(1 ate 9)
         if(idVictory[2] == 9 && idVictory[0] == 1 && idVictory[1] == 5){
-            console.log(idVictory[i]) 
-            console.log(document.querySelector('.span' + idVictory[i])) 
             document.querySelector('.span' + idVictory[i]).style.transform = 'rotate(-45deg)' 
             document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(45deg)'
 
-            //Aumentando span para ficar do tamanho da diagonal do quadrado(aprox: 1,42)
-            document.querySelector('.span' + idVictory[i]).style.height =  '142%'
+            //Aumentando span central para ficar do tamanho da diagonal do quadrado inteiro
+            document.querySelector('.span' + idVictory[1]).style.height =  '423%'
         }else //Diagonal(3 ate 7)
         if(idVictory[2] == 7 && idVictory[0] == 3 && idVictory[1] == 5){
             console.log(idVictory[i]) 
@@ -240,8 +289,8 @@ function rotateSpan(){
             document.querySelector('.span' + idVictory[i]).style.transform = 'rotate(45deg)' 
             document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(-45deg)'
 
-            //Aumentando span para ficar do tamanho da diagonal do quadrado(aprox: 1,42)
-            document.querySelector('.span' + idVictory[i]).style.height =  '142%'
+            //Aumentando span central para ficar do tamanho da diagonal do quadrado inteiro
+            document.querySelector('.span' + idVictory[1]).style.height =  '423%'
         }
     }
 }
