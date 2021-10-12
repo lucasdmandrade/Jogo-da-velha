@@ -99,6 +99,7 @@
     justify-content: center;
 
     text-align: center;
+    border-radius: 25px;
 }
 .insert p{
     display: flex;
@@ -128,5 +129,17 @@ span{
     border:solid;
     border-radius: 20px;
     width: 0px;
+    height: 100%;
+}
+
+.doubleSpan{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border:solid;
+    border-color: blue;
+    border-radius: 20px;
+    width: -1px;
     height: 100%;
 }

@@ -228,7 +228,12 @@ function rotateSpan(){
 
     console.log(idVictory2)
     console.log(idVictory)
+    //Id do elemento repetido
+    let doubleId = ''
+    doubleId = doubleSpan(idVictory2)
 
+    //
+    //INSERIR FUNÇÃO DE TESTE AQUI
     //Vitória dupla 
     if(idVictory2[0] != undefined){
         alert(idVictory2)
@@ -237,6 +242,7 @@ function rotateSpan(){
             if(idVictory2[2] == idVictory2[1] + 3 && idVictory2[1] == idVictory2[0] +3){
             //Aumentando span central para ficar do tamanho do quadrado inteiro
             document.querySelector('.span' + idVictory2[1]).style.height =  '300%'
+            checkIdDouble(idVictory2[1], doubleId)
             }else//Linha horizontal
             if(idVictory2[2] == idVictory2[1] + 1 && idVictory2[1] == idVictory2[0] +1){
                 document.querySelector('.span' + idVictory2[i]).style.transform = 'rotate(90deg)' 
@@ -244,20 +250,23 @@ function rotateSpan(){
             
                 //Aumentando span central para ficar do tamanho do quadrado inteiro
                 document.querySelector('.span' + idVictory2[1]).style.height =  '300%'
+                checkIdDouble(idVictory2[i], doubleId)
             }else //Diagonal(1 ate 9)
             if(idVictory2[2] == 9 && idVictory2[0] == 1 && idVictory2[1] == 5){
                 document.querySelector('.span' + idVictory2[i]).style.transform = 'rotate(-45deg)' 
                 document.querySelector('.span' + idVictory2[i]).querySelector('p').style.transform = 'rotate(45deg)'
     
                 //Aumentando span central para ficar do tamanho da diagonal do quadrado inteiro
-                document.querySelector('.span' + idVictory2[1]).style.height =  '423%'
+                document.querySelector('.span' + 5).style.height =  '423%'
+                checkIdDouble(idVictory2[i], doubleId)
             }else //Diagonal(3 ate 7)
             if(idVictory2[2] == 7 && idVictory2[0] == 3 && idVictory2[1] == 5){
                 document.querySelector('.span' + idVictory2[i]).style.transform = 'rotate(45deg)' 
                 document.querySelector('.span' + idVictory2[i]).querySelector('p').style.transform = 'rotate(-45deg)'
     
                 //Aumentando span central para ficar do tamanho da diagonal do quadrado inteiro
-                document.querySelector('.span' + idVictory2[1]).style.height =  '423%'
+                document.querySelector('.span' + 5).style.height =  '423%'
+                checkIdDouble(idVictory2[i], doubleId)
             }
         }
     }
@@ -282,7 +291,7 @@ function rotateSpan(){
             document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(45deg)'
 
             //Aumentando span central para ficar do tamanho da diagonal do quadrado inteiro
-            document.querySelector('.span' + idVictory[1]).style.height =  '423%'
+            document.querySelector('.span' + 5).style.height =  '423%'
         }else //Diagonal(3 ate 7)
         if(idVictory[2] == 7 && idVictory[0] == 3 && idVictory[1] == 5){
             console.log(idVictory[i]) 
@@ -291,8 +300,9 @@ function rotateSpan(){
             document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(-45deg)'
 
             //Aumentando span central para ficar do tamanho da diagonal do quadrado inteiro
-            document.querySelector('.span' + idVictory[1]).style.height =  '423%'
+            document.querySelector('.span' + 5).style.height =  '423%'
         }
+        document.querySelector('.span' + idVictory[1]).style.borderColor =  'red'
     }
 }
 
@@ -302,5 +312,35 @@ function draw(){
         if(confirm('Empate! Deseja jogar mais?')){
             restartGame()
         }
+    }
+}
+
+//Colocando span duplo 
+function doubleSpan(idVictory2){
+    for( var i = 0; i < idVictory.length; i++){
+        for( var j = 0; j < idVictory2.length; j++){
+            if(idVictory[i] === idVictory2[j]){
+                window.alert(idVictory[i])
+                square = `quadrado${idVictory[i]}`
+                div = document.getElementById(idVictory[i])
+                document.getElementById(`${square}`).innerHTML = `
+                    <button class="insert" id='${idVictory[i]}' name="${idVictory[i]}" onchange="pullValue(this.id)"
+                    value="${div.value}" readonly>
+                        <span class="doubleSpan${idVictory[i]}"> 
+                            <span class="span${idVictory[i]}"><p>${div.value} </p></span>
+                        </span>
+                    </button>
+        `
+        return idVictory2[i]
+            }
+        }
+    }
+}
+
+//Inserir style no span duplo 
+function checkIdDouble(id, doubleID){
+    if(id == doubleID){
+        document.querySelector('doubleSpan4').style = document.querySelector('.span' + id).style
+        console.log(document.querySelector('doubleSpan4').style)
     }
 }
