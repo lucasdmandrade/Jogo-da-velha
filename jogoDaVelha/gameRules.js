@@ -219,7 +219,6 @@ function rotateSpan(){
     if(idVictory.length > 3){
         idVictory2 = [idVictory[3], idVictory[4], idVictory[5]]
         idVictory.splice(3, 3)
-        console.log(idVictory2)
     }
 
     idVictory.sort()
@@ -237,7 +236,6 @@ function rotateSpan(){
     //INSERIR FUNÇÃO DE TESTE AQUI
     //Vitória dupla 
     if(idVictory2[0] != undefined){
-        alert(idVictory2)
         for(var i = 0; i <3; i++){
             //Linha vertical
             if(idVictory2[2] == idVictory2[1] + 3 && idVictory2[1] == idVictory2[0] +3){
@@ -246,7 +244,7 @@ function rotateSpan(){
 
                 //Aumentando span central para ficar do tamanho do quadrado inteiro
                 //document.querySelector('.span' + idVictory2[1]).style.height =  '300%'
-                doubleRotate = checkIdDouble(idVictory2[1], doubleId, 180, doubleRotate)
+                doubleRotate = checkIdDouble(idVictory2[1], doubleId, 360, doubleRotate)
                 expandedSpan(idVictory[i], 360, i)
             }else//Linha horizontal
             if(idVictory2[2] == idVictory2[1], + 1 && idVictory2[1] == idVictory2[0] +1){
@@ -313,8 +311,6 @@ function rotateSpan(){
             expandedSpan(idVictory[i], -45, i)
         }else //Diagonal(3 ate 7)
         if(idVictory[2] == 7 && idVictory[0] == 3 && idVictory[1] == 5){
-            console.log(idVictory[i]) 
-            console.log(document.querySelector('.span' + idVictory[i])) 
             document.querySelector('.span' + idVictory[i]).style.transform = 'rotate(45deg)' 
             document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(-45deg)'
 
@@ -339,7 +335,6 @@ function doubleSpan(idVictory2){
     for( var i = 0; i < idVictory.length; i++){
         for( var j = 0; j < idVictory2.length; j++){
             if(idVictory[i] === idVictory2[j]){
-                window.alert(idVictory[i])
                 square = `quadrado${idVictory[i]}`
                 div = document.getElementById(idVictory[i])
                 document.getElementById(`${square}`).innerHTML = `
@@ -363,38 +358,36 @@ function doubleSpan(idVictory2){
 function checkIdDouble(id, doubleID, rotate, doubleRotate){
     if(id == doubleID){
         doubleRotate = rotate
-
-        //Calculando a rotação do segundo span
-        console.log(document.querySelector('.span' + id).querySelector('p').style.transform)
-        console.log(rotate)
-        //document.querySelector('.doubleSpan' + doubleID).style.transform = document.querySelector('.doubleSpan' + doubleID).querySelector('p').style.transform
-
-
+        alert(doubleRotate)
         document.querySelector('.doubleSpan' + doubleID).style.transform = `rotate(${rotate}deg)`
-        //document.querySelector('.doubleSpan' + doubleID).querySelector('p').style.transform = `rotate(-${rotate}deg)`
         }
+
         return doubleRotate
 }
 
 //Função para corrigir a rotação do double span
 function correctDoubleSpan(id, doubleID, rotate,doubleRotate){
     if(id == doubleID){
-        window.alert(rotate)
-        alert(doubleRotate)
         document.querySelector('.doubleSpan' + doubleID).style.transform = `rotate(${rotate * -1 + doubleRotate}deg)`
         document.querySelector('.doubleSpan' + doubleID).querySelector('p').style.transform = `rotate(${doubleRotate * -1}deg)`
+        
+        expandedSpan(id, doubleRotate, 2, true)
     }
 }
 
 //Função para aumentar span central 
-function expandedSpan(id, rotate, i){
-    if(rotate == 90 || rotate == 360){
+function expandedSpan(id, rotate, i, check ){
+    if(rotate == 90 || rotate == 360 || rotate == 180 || rotate == 0){
+        console.log(check)
         document.querySelector('.span' + id).style.height =  '24vh'
+        if(check == true){
+            document.querySelector('.doubleSpan' + id).style.height =  '24vh'
+        }
     } else{
         if(i == 1){
-            document.querySelector('.span' + id).style.height =  '101vh'
+            document.querySelector('.span' + id).style.height =  '103vh'
         }else{
-            document.querySelector('.span' + id).style.height =  '32vh'
+            document.querySelector('.span' + id).style.height =  '30vh'
         }
     }
 }
