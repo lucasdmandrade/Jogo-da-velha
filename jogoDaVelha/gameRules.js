@@ -358,7 +358,6 @@ function doubleSpan(idVictory2){
 function checkIdDouble(id, doubleID, rotate, doubleRotate){
     if(id == doubleID){
         doubleRotate = rotate
-        alert(doubleRotate)
         document.querySelector('.doubleSpan' + doubleID).style.transform = `rotate(${rotate}deg)`
         }
 
@@ -378,7 +377,6 @@ function correctDoubleSpan(id, doubleID, rotate,doubleRotate){
 //Função para aumentar span central 
 function expandedSpan(id, rotate, i, check ){
     if(rotate == 90 || rotate == 360 || rotate == 180 || rotate == 0){
-        console.log(check)
         document.querySelector('.span' + id).style.height =  '24vh'
         if(check == true){
             document.querySelector('.doubleSpan' + id).style.height =  '24vh'
