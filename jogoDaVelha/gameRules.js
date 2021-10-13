@@ -243,33 +243,38 @@ function rotateSpan(){
             if(idVictory2[2] == idVictory2[1] + 3 && idVictory2[1] == idVictory2[0] +3){
                 document.querySelector('.span' + idVictory2[i]).style.transform = 'rotate(360deg)' 
                 document.querySelector('.span' + idVictory2[i]).querySelector('p').style.transform = 'rotate(-360deg)'
+
                 //Aumentando span central para ficar do tamanho do quadrado inteiro
-                document.querySelector('.span' + idVictory2[1]).style.height =  '300%'
+                //document.querySelector('.span' + idVictory2[1]).style.height =  '300%'
                 doubleRotate = checkIdDouble(idVictory2[1], doubleId, 180, doubleRotate)
+                expandedSpan(idVictory[i], 360, i)
             }else//Linha horizontal
-            if(idVictory2[2] == idVictory2[1] + 1 && idVictory2[1] == idVictory2[0] +1){
+            if(idVictory2[2] == idVictory2[1], + 1 && idVictory2[1] == idVictory2[0] +1){
                 document.querySelector('.span' + idVictory2[i]).style.transform = 'rotate(90deg)' 
                 document.querySelector('.span' + idVictory2[i]).querySelector('p').style.transform = 'rotate(-90deg)'
             
                 //Aumentando span central para ficar do tamanho do quadrado inteiro
-                document.querySelector('.span' + idVictory2[1]).style.height =  '300%'
+                //document.querySelector('.span' + idVictory2[1]).style.height =  '300%'
                 doubleRotate = checkIdDouble(idVictory2[i], doubleId, 90, doubleRotate)
+                expandedSpan(idVictory[i], 90, i)
             }else //Diagonal(1 ate 9)
             if(idVictory2[2] == 9 && idVictory2[0] == 1 && idVictory2[1] == 5){
                 document.querySelector('.span' + idVictory2[i]).style.transform = 'rotate(-45deg)' 
                 document.querySelector('.span' + idVictory2[i]).querySelector('p').style.transform = 'rotate(45deg)'
     
                 //Aumentando span central para ficar do tamanho da diagonal do quadrado inteiro
-                document.querySelector('.span' + 5).style.height =  '423%'
+                //document.querySelector('.span' + 5).style.height =  '423%'
                 doubleRotate = checkIdDouble(idVictory2[i], doubleId, -45, doubleRotate)
+                expandedSpan(idVictory[i], -45, i)
             }else //Diagonal(3 ate 7)
             if(idVictory2[2] == 7 && idVictory2[0] == 3 && idVictory2[1] == 5){
                 document.querySelector('.span' + idVictory2[i]).style.transform = 'rotate(45deg)' 
                 document.querySelector('.span' + idVictory2[i]).querySelector('p').style.transform = 'rotate(-45deg)'
     
                 //Aumentando span central para ficar do tamanho da diagonal do quadrado inteiro
-                document.querySelector('.span' + 5).style.height =  '423%'
+                //document.querySelector('.span' + 5).style.height =  '423%'
                 doubleRotate = checkIdDouble(idVictory2[i], doubleId, 45, doubleRotate)
+                expandedSpan(idVictory[i], 45, i)
             }
         }
     }
@@ -279,11 +284,12 @@ function rotateSpan(){
         if(idVictory[2] == idVictory[1] + 3 && idVictory[1] == idVictory[0] +3){
             rotate = 360
             document.querySelector('.span' + idVictory[i]).style.transform = 'rotate(360deg)'
-                document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(-360deg)'
+            document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(-360deg)'
             //Aumentando span central para ficar do tamanho do quadrado inteiro
-            document.querySelector('.span' + idVictory[1]).style.height =  '300%'
+            //document.querySelector('.span' + idVictory[1]).style.height =  '300%'
 
             correctDoubleSpan(idVictory[i], doubleId, 360, doubleRotate)
+            expandedSpan(idVictory[i], 360, i)
         } else
         //Linha horizontal
         if(idVictory[2] == idVictory[1] + 1 && idVictory[1] == idVictory[0] +1){
@@ -291,18 +297,20 @@ function rotateSpan(){
             document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(-90deg)'
 
             //Aumentando span central para ficar do tamanho do quadrado inteiro
-            document.querySelector('.span' + idVictory[1]).style.height =  '300%'
+            //document.querySelector('.span' + idVictory[1]).style.height =  '300%'
 
             correctDoubleSpan(idVictory[i], doubleId, 90, doubleRotate)
+            expandedSpan(idVictory[i], 90, i)
         }else //Diagonal(1 ate 9)
         if(idVictory[2] == 9 && idVictory[0] == 1 && idVictory[1] == 5){
             document.querySelector('.span' + idVictory[i]).style.transform = 'rotate(-45deg)' 
             document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(45deg)'
 
             //Aumentando span central para ficar do tamanho da diagonal do quadrado inteiro
-            document.querySelector('.span' + 5).style.height =  '423%'
+            //document.querySelector('.span' + 5).style.height =  '423%'
 
             correctDoubleSpan(idVictory[i], doubleId, -45, doubleRotate)
+            expandedSpan(idVictory[i], -45, i)
         }else //Diagonal(3 ate 7)
         if(idVictory[2] == 7 && idVictory[0] == 3 && idVictory[1] == 5){
             console.log(idVictory[i]) 
@@ -311,11 +319,9 @@ function rotateSpan(){
             document.querySelector('.span' + idVictory[i]).querySelector('p').style.transform = 'rotate(-45deg)'
 
             //Aumentando span central para ficar do tamanho da diagonal do quadrado inteiro
-            document.querySelector('.span' + 5).style.height =  '423%'
-
             correctDoubleSpan(idVictory[i], doubleId, 45, doubleRotate)
+            expandedSpan(idVictory[i], 45, i)
         }
-        document.querySelector('.span' + idVictory[1]).style.borderColor =  'red'
     }
 }
 
@@ -377,5 +383,18 @@ function correctDoubleSpan(id, doubleID, rotate,doubleRotate){
         alert(doubleRotate)
         document.querySelector('.doubleSpan' + doubleID).style.transform = `rotate(${rotate * -1 + doubleRotate}deg)`
         document.querySelector('.doubleSpan' + doubleID).querySelector('p').style.transform = `rotate(${doubleRotate * -1}deg)`
+    }
+}
+
+//Função para aumentar span central 
+function expandedSpan(id, rotate, i){
+    if(rotate == 90 || rotate == 360){
+        document.querySelector('.span' + id).style.height =  '24vh'
+    } else{
+        if(i == 1){
+            document.querySelector('.span' + id).style.height =  '101vh'
+        }else{
+            document.querySelector('.span' + id).style.height =  '32vh'
+        }
     }
 }
